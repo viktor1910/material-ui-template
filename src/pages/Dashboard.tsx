@@ -11,7 +11,9 @@ import Badge from '@material-ui/core/Badge';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
-
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 //icon
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -76,7 +78,26 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'flex-end',
         padding: '0 8px',
         ...theme.mixins.toolbar
-    }
+    },
+    content: {
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
+    },
+    appbarSpacer: theme.mixins.toolbar,
+    container: {
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
+    },
+    paper: {
+        padding: theme.spacing(2),
+        display: 'flex',
+        overflow: 'auto',
+        flexDirection: 'column',
+    },
+    fixedHeight: {
+        height: 240,
+    },
 })
 )
 
@@ -91,6 +112,8 @@ const Dashboard = () => {
     const handleDrawerClose = () => {
         setOpen(false)
     }
+
+    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
     return (
         <div className={classes.root}>
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
@@ -128,6 +151,28 @@ const Dashboard = () => {
                 <Divider />
                 <List>{secondaryListItems}</List>
             </Drawer>
+            <main className={classes.content}>
+                <div className={classes.appbarSpacer} />
+                <Container maxWidth="lg" className={classes.container}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} md={8} lg={9}>
+                            <Paper className={fixedHeightPaper}>
+                                Something first
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12} md={4} lg={3}>
+                            <Paper className={fixedHeightPaper}>
+                                Recent Deposits
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Paper className={fixedHeightPaper}>
+                                Recent Oders
+                            </Paper>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </main>
         </div>
     )
 }
