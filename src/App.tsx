@@ -8,6 +8,7 @@ import {
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const SignIn = React.lazy(() => import('./pages/SignInSide'));
+const SignUp = React.lazy(() => import('./pages/SignUp'));
 
 function App() {
   return (
@@ -22,6 +23,11 @@ function App() {
         <Route path="/signin">
           <Suspense fallback={<LinearProgress />}>
             <SignIn />
+          </Suspense>
+        </Route>
+        <Route path="/signup">
+          <Suspense fallback={<LinearProgress />}>
+            <SignUp />
           </Suspense>
         </Route>
       </Switch>
