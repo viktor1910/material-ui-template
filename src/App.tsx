@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+const SignIn = React.lazy(() => import('./pages/SignInSide'));
 
 function App() {
   return (
@@ -16,6 +17,11 @@ function App() {
         <Route path="/dashboard">
           <Suspense fallback={<LinearProgress />}>
             <Dashboard />
+          </Suspense>
+        </Route>
+        <Route path="/signin">
+          <Suspense fallback={<LinearProgress />}>
+            <SignIn />
           </Suspense>
         </Route>
       </Switch>
