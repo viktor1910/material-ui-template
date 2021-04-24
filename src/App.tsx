@@ -9,6 +9,7 @@ import {
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 const SignIn = React.lazy(() => import('./pages/SignInSide'));
 const SignUp = React.lazy(() => import('./pages/SignUp'));
+const Blog = React.lazy(() => import('./pages/Blog'))
 
 function App() {
   return (
@@ -28,6 +29,11 @@ function App() {
         <Route path="/signup">
           <Suspense fallback={<LinearProgress />}>
             <SignUp />
+          </Suspense>
+        </Route>
+        <Route path="/blog">
+          <Suspense fallback={<LinearProgress />}>
+            <Blog />
           </Suspense>
         </Route>
       </Switch>
